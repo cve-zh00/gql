@@ -152,16 +152,16 @@ setting the `streaming` argument of :class:`FileVar <gql.FileVar>` to `True`
 
 Another option is to use an async generator to provide parts of the file.
 
-You can use `aiofiles`_
+You can use `asyncfiles`_
 to read the files in chunks and create this asynchronous generator.
 
 .. _Streaming uploads on aiohttp docs: https://docs.aiohttp.org/en/stable/client_quickstart.html#streaming-uploads
-.. _aiofiles: https://github.com/Tinche/aiofiles
+.. _asyncfiles: https://github.com/cve-zh00/asyncfiles
 
 .. code-block:: python
 
     async def file_sender(file_name):
-        async with aiofiles.open(file_name, 'rb') as f:
+        async with asyncfiles.open(file_name, 'rb') as f:
             while chunk := await f.read(64*1024):
                 yield chunk
 

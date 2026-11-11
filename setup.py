@@ -22,7 +22,7 @@ tests_requires = [
     "pytest-console-scripts==1.4.1",
     "pytest-cov==7.1.0",
     "vcrpy==8.2.1",
-    "aiofiles",
+    "py-asyncfiles>=1.10.4",
 ]
 
 dev_requires = [
@@ -34,7 +34,6 @@ dev_requires = [
     "sphinx>=8.1.0,<9",
     "sphinx_rtd_theme>=3.0.2,<4",
     "sphinx-argparse==0.5.2",
-    "types-aiofiles",
     "types-requests",
 ] + tests_requires
 
@@ -65,7 +64,7 @@ install_botocore_requires = [
 ]
 
 install_aiofiles_requires = [
-    "aiofiles",
+    "py-asyncfiles>=1.10.4",
 ]
 
 install_all_requires = (
@@ -119,6 +118,7 @@ setup(
         "websockets": install_websockets_requires,
         "botocore": install_botocore_requires,
         "aiofiles": install_aiofiles_requires,
+        "asyncfiles": install_aiofiles_requires,
     },
     include_package_data=True,
     zip_safe=False,

@@ -51,10 +51,12 @@ class FileVar:
     def _make_file_streamer(self) -> None:
         assert isinstance(self.f, str), "streaming option needs a filepath str"
 
-        import aiofiles
+        import asyncfiles
 
         async def file_sender(file_name):
-            async with aiofiles.open(file_name, "rb") as f:
+            async with asyncfiles.open(
+                file_name, "rb", buffer_size=self.streaming_block_size
+            ) as f:
                 while chunk := await f.read(self.streaming_block_size):
                     yield chunk
 

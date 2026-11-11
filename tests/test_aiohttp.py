@@ -1023,7 +1023,7 @@ async def test_aiohttp_stream_reader_upload(aiohttp_server):
 
 @pytest.mark.asyncio
 async def test_aiohttp_async_generator_upload(aiohttp_server):
-    import aiofiles
+    import asyncfiles
     from aiohttp import web
 
     from gql.transport.aiohttp import AIOHTTPTransport
@@ -1055,7 +1055,7 @@ async def test_aiohttp_async_generator_upload(aiohttp_server):
         file_path = test_file.filename
 
         async def file_sender(file_name):
-            async with aiofiles.open(file_name, "rb") as f:
+            async with asyncfiles.open(file_name, "rb") as f:
                 chunk = await f.read(64 * 1024)
                 while chunk:
                     yield chunk
